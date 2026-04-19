@@ -1,0 +1,15 @@
+# Virtual environment
+venv/
+env/
+__pycache__/
+*.pyc
+
+# IDEs
+.vscode/
+.idea/
+
+# Environment files
+.env
+
+# Uploads directory (dynamic data shouldn't be version controlled)
+uploads/
