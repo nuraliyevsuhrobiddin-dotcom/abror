@@ -73,15 +73,10 @@ def get_current_user(authorization: str = Header(None), db: sqlite3.Connection =
         
     return dict(user)
 
-raw_origins = os.getenv("ALLOWED_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173")
-allowed_origins = [origin.strip() for origin in raw_origins.split(",") if origin.strip()]
-allow_all_origins = "*" in allowed_origins
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[] if allow_all_origins else (allowed_origins or ["http://localhost:5173"]),
-    allow_origin_regex=".*" if allow_all_origins else None,
-    allow_credentials=not allow_all_origins,
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
